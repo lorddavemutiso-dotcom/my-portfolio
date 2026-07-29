@@ -10,7 +10,7 @@
   :root{
     --bg: #0F1024;
     --bg-2: #15173A;
-    --panel: #1A1C46;
+    --panel: #1A1C46; 
     --line: #302F63;
     --text: #F5F3FF;
     --dim: #A6A3D6;
@@ -200,7 +200,22 @@
   .cta-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--spectrum);}
   .cta-panel h2{font-family:var(--display);font-size:clamp(24px,4vw,34px);font-weight:700;margin-bottom:14px;}
   .cta-panel p{color:var(--dim);font-size:16px;max-width:52ch;margin:0 auto 28px;}
-  .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+  .contact-links{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:14px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .contact-links a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    min-height:46px;
+    text-align:center;
+    white-space:nowrap;
+  }
 
   footer{text-align:center;padding:36px 24px;color:var(--dim);font-size:13px;}
 
@@ -209,6 +224,12 @@
     .band-stats{grid-template-columns:1fr;}
     .stat{border-right:none;border-bottom:1px solid var(--line);}
     .stat:last-child{border-bottom:none;}
+  }
+
+  @media (max-width:560px){
+    .cta-panel{padding:40px 20px;}
+    .contact-links{grid-template-columns:1fr;}
+    .contact-links a{max-width:100%;}
   }
 </style>
 </head>
@@ -417,9 +438,9 @@
       <h2>Let's talk.</h2>
       <p>Open to senior engineering roles, advisory work, and conversations with people building something worth securing.</p>
       <div class="contact-links">
-        <a href="mailto:you@email.com" class="btn-solid">Email me</a>
-        <a href="https://linkedin.com/in/lorddavid01" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
-        <a href="https://github.com/Lord Dave" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
+        <a href="mailto:lorddavemutiso@gmail.com" class="btn-solid">Email me</a>
+        <a href="https://www.linkedin.com/in/lorddavid01" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
+        <a href="https://www.github.com/lorddavemutiso" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
       </div>
     </div>
   </div>
