@@ -1,114 +1,461 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UI / UX & Web — Portfolio</title>
-  <meta name="description" content="UI/UX and front-end web design portfolio showcasing case studies, process and skills." />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAVID - MUTISO — Telecommunications & Cybersecurity Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0F1024;
+    --bg-2: #15173A;
+    --panel: #1A1C46; 
+    --line: #302F63;
+    --text: #F5F3FF;
+    --dim: #A6A3D6;
+    --cyan: #00E5FF;
+    --magenta: #FF3D9A;
+    --amber: #FFB020;
+    --spectrum: linear-gradient(90deg, var(--cyan) 0%, var(--magenta) 50%, var(--amber) 100%);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Manrope', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(0,229,255,0.16), transparent 60%),
+      radial-gradient(ellipse 800px 500px at 100% 10%, rgba(255,61,154,0.14), transparent 55%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.65;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--magenta);color:#0F1024;}
+
+  /* spectrum rule, the signature element */
+  .spectrum-rule{height:4px;border-radius:2px;background:var(--spectrum);}
+
+  /* ---- nav ---- */
+  header.topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,16,36,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1080px;margin:0 auto;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.01em;}
+  .logo span{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  nav.links{display:flex;gap:28px;}
+  nav.links a{color:var(--dim);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s;}
+  nav.links a:hover{color:var(--text);}
+  .cta-btn{
+    font-family:var(--body);font-weight:600;font-size:14px;
+    background:var(--spectrum);color:#0F1024;padding:10px 20px;border-radius:999px;
+    text-decoration:none;border:none;display:inline-block;
+  }
+
+  /* ---- hero ---- */
+  .hero{padding:100px 0 60px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;color:var(--cyan);
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);}
+  .hero h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.04;letter-spacing:-0.02em;
+    max-width:14ch;margin-bottom:22px;
+  }
+  .hero h1 .grad{
+    background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .lede{font-size:19px;color:var(--dim);max-width:56ch;margin-bottom:36px;}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+  .btn-outline{
+    font-weight:600;font-size:14.5px;color:var(--text);
+    border:1px solid var(--line);padding:12px 22px;border-radius:999px;
+    text-decoration:none;transition:border-color .15s, background .15s;
+  }
+  .btn-outline:hover{border-color:var(--cyan);background:rgba(0,229,255,0.06);}
+  .btn-solid{
+    font-weight:600;font-size:14.5px;color:#0F1024;
+    background:var(--spectrum);padding:12px 24px;border-radius:999px;text-decoration:none;
+  }
+
+  /* spectrum stat band — the signature: WDM channels as data */
+  .band{
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    background:var(--panel);
+  }
+  .band-top{height:5px;background:var(--spectrum);}
+  .band-stats{display:grid;grid-template-columns:repeat(3,1fr);}
+  .stat{padding:26px 24px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:var(--display);font-size:32px;font-weight:700;}
+  .stat:nth-child(1) .num{color:var(--cyan);}
+  .stat:nth-child(2) .num{color:var(--magenta);}
+  .stat:nth-child(3) .num{color:var(--amber);}
+  .stat .label{font-size:13px;color:var(--dim);margin-top:4px;}
+
+  /* ---- section shell ---- */
+  section{padding:72px 0;}
+  .section-head{margin-bottom:36px;max-width:64ch;}
+  .kicker{
+    font-family:var(--mono);font-size:12px;color:var(--magenta);
+    text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;
+  }
+  h2.section-title{font-family:var(--display);font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-0.01em;margin-bottom:12px;}
+  .section-sub{color:var(--dim);font-size:15.5px;}
+
+  /* about */
+  .about p{color:#D7D5F0;font-size:16px;max-width:70ch;}
+  .about p + p{margin-top:16px;}
+
+  /* value props / for investors */
+  .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+  .value-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;
+    position:relative;overflow:hidden;
+  }
+  .value-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--spectrum);
+  }
+  .value-card h3{font-family:var(--display);font-size:17px;margin-bottom:8px;}
+  .value-card p{color:var(--dim);font-size:14px;}
+
+  /* skills */
+  .skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
+  .skill-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .skill-card h3{font-family:var(--display);font-size:14px;margin-bottom:14px;letter-spacing:.02em;}
+  .skill-card:nth-child(1) h3{color:var(--cyan);}
+  .skill-card:nth-child(2) h3{color:var(--magenta);}
+  .skill-card:nth-child(3) h3{color:var(--amber);}
+  .skill-card:nth-child(4) h3{color:var(--cyan);}
+  .skill-card ul{list-style:none;}
+  .skill-card li{font-size:14px;color:#D7D5F0;padding:6px 0;border-bottom:1px solid var(--line);}
+  .skill-card li:last-child{border-bottom:none;}
+
+  /* projects */
+  .project{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:28px;margin-bottom:18px;transition:transform .15s, border-color .15s;
+  }
+  .project:hover{transform:translateY(-3px);border-color:var(--cyan);}
+  .project-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:10px;}
+  .project-head h3{font-family:var(--display);font-size:19px;font-weight:600;}
+  .project-tag{
+    font-family:var(--mono);font-size:11.5px;padding:4px 10px;border-radius:999px;
+    background:rgba(255,61,154,0.12);color:var(--magenta);border:1px solid rgba(255,61,154,0.3);
+  }
+  .project p{color:var(--dim);font-size:15px;margin-bottom:12px;}
+  .project .impact{
+    font-family:var(--mono);font-size:13.5px;color:var(--amber);
+    display:flex;align-items:center;gap:8px;
+  }
+  .project .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .project .stack span{font-family:var(--mono);font-size:11px;color:var(--dim);border:1px solid var(--line);padding:3px 9px;border-radius:6px;}
+
+  /* experience */
+  .exp-item{position:relative;padding-left:28px;margin-bottom:30px;border-left:2px solid var(--line);}
+  .exp-item:last-child{margin-bottom:0;}
+  .exp-item::before{
+    content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;
+    background:var(--spectrum);
+  }
+  .exp-item h3{font-family:var(--display);font-size:17px;font-weight:600;}
+  .exp-item .meta{color:var(--dim);font-family:var(--mono);font-size:12.5px;margin:3px 0 12px;}
+  .exp-item ul{padding-left:18px;color:#D7D5F0;font-size:14.5px;}
+  .exp-item li{margin-bottom:6px;}
+
+  /* certs */
+  .cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+  .cert{
+    display:flex;align-items:center;gap:12px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    font-weight:600;font-size:14px;
+  }
+  .cert .icon{
+    width:28px;height:28px;border-radius:50%;background:var(--spectrum);
+    display:flex;align-items:center;justify-content:center;color:#0F1024;font-size:13px;flex-shrink:0;
+  }
+
+  /* contact / CTA */
+  .cta-panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:24px;
+    padding:56px 40px;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--spectrum);}
+  .cta-panel h2{font-family:var(--display);font-size:clamp(24px,4vw,34px);font-weight:700;margin-bottom:14px;}
+  .cta-panel p{color:var(--dim);font-size:16px;max-width:52ch;margin:0 auto 28px;}
+  .contact-links{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:14px;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .contact-links a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    min-height:46px;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  footer{text-align:center;padding:36px 24px;color:var(--dim);font-size:13px;}
+
+  @media (max-width:720px){
+    nav.links{display:none;}
+    .band-stats{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--line);}
+    .stat:last-child{border-bottom:none;}
+  }
+
+  @media (max-width:560px){
+    .cta-panel{padding:40px 20px;}
+    .contact-links{grid-template-columns:1fr;}
+    .contact-links a{max-width:100%;}
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#">Your Name — UI/UX & Web</a>
-      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
-      <nav id="primary-nav" class="primary-nav" hidden>
-        <ul>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <h1>UI / UX & Web Design</h1>
-        <p class="lede">I design usable, beautiful interfaces and build responsive front-end experiences that solve real user problems.</p>
-        <p>
-          <a class="btn primary" href="#work">See my work</a>
-          <a class="btn outline" href="#contact">Hire me</a>
-        </p>
-      </div>
-    </section>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">DAVID<span>MUTISO</span></div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+    </nav>
+    <a href="#contact" class="cta-btn">Get in touch</a>
+  </div>
+</header>
 
-    <section id="work" class="container work">
-      <h2>Selected case studies</h2>
-      <div class="cards">
-        <article class="card">
-          <img src="https://via.placeholder.com/800x450.png?text=Project+1" alt="Project 1 screenshot" />
-          <div class="card-body">
-            <h3>Project One — Mobile-first e-commerce</h3>
-            <p>Redesigned the product discovery flow to reduce time-to-purchase and improve conversion on mobile devices.</p>
-            <p><button class="btn" data-project="1">Read case study</button></p>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://via.placeholder.com/800x450.png?text=Project+2" alt="Project 2 screenshot" />
-          <div class="card-body">
-            <h3>Project Two — SaaS dashboard</h3>
-            <p>Improved information density and introduced a design system to scale complex interactions for enterprise users.</p>
-            <p><button class="btn" data-project="2">Read case study</button></p>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="https://via.placeholder.com/800x450.png?text=Project+3" alt="Project 3 screenshot" />
-          <div class="card-body">
-            <h3>Project Three — Brand & landing</h3>
-            <p>Created a cohesive visual language and handcrafted landing pages that increased demo requests.</p>
-            <p><button class="btn" data-project="3">Read case study</button></p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="process" class="container process">
-      <h2>My process</h2>
-      <ol>
-        <li><strong>Discover:</strong> Research, stakeholder interviews, analytics review.</li>
-        <li><strong>Define:</strong> User flows, IA, and feature prioritization.</li>
-        <li><strong>Design:</strong> Wireframes, prototypes, visual design & design system tokens.</li>
-        <li><strong>Validate:</strong> Usability testing and iteration.</li>
-        <li><strong>Deliver:</strong> High-fidelity assets and front-end implementation handoff.</li>
-      </ol>
-    </section>
-
-    <section id="skills" class="container skills">
-      <h2>Skills & tools</h2>
-      <ul class="skill-list">
-        <li>UX Research — interviews & usability testing</li>
-        <li>Interaction Design — wireframes & flows</li>
-        <li>Visual Design — Figma, design systems</li>
-        <li>Front-end — HTML, CSS (Flexbox/Grid), JS, accessibility</li>
-        <li>Prototyping — Figma, Framer, accessible prototypes</li>
-      </ul>
-    </section>
-
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p>If you'd like to collaborate, email <a href="mailto:you@domain.com">you@domain.com</a> or use the contact button below.</p>
-      <p><a class="btn primary" href="mailto:you@domain.com">Email me</a></p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Your Name — UI/UX & Web • <a href="#">Resume</a></p>
-    </div>
-  </footer>
-
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Case study">
-      <button class="modal-close" aria-label="Close">×</button>
-      <div id="modal-content"></div>
-    </div>
+<div class="wrap hero">
+  <div class="eyebrow"><span class="dot"></span>Available for new roles &amp; partnerships</div>
+  <h1>Securing the networks the <span class="grad">modern world</span> runs on.</h1>
+  <p class="lede">I'm DAVID MUTISO — a telecommunications and cybersecurity engineer building resilient, high-throughput network infrastructure and closing the gaps attackers look for. Trusted to keep systems online, secure, and scaling.</p>
+  <div class="actions">
+    <a href="#projects" class="btn-solid">See the work</a>
+    <a href="#contact" class="btn-outline">Start a conversation</a>
   </div>
 
-  <script src="script.js"></script>
+  <div class="band">
+    <div class="band-top"></div>
+    <div class="band-stats">
+      <div class="stat"><div class="num">99.98%</div><div class="label">Network uptime maintained</div></div>
+      <div class="stat"><div class="num">$2.4M+</div><div class="label">Cost savings delivered</div></div>
+      <div class="stat"><div class="num">40+</div><div class="label">Critical systems secured</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="section-head">
+      <div class="kicker">About</div>
+      <h2 class="section-title">Built for infrastructure that can't go down.</h2>
+    </div>
+    <p>I work at the intersection of telecommunications and cybersecurity — designing, hardening, and monitoring the networks that carry voice, data, and everything in between. My background spans carrier-grade infrastructure, enterprise network security, and incident response.</p>
+    <p>I'm passionate about building secure, reliable network infrastructure that can withstand the demands of modern digital environments.</p>
+  </div>
+</section>
+
+<section id="value">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Why it matters</div>
+      <h2 class="section-title">What I bring to the table</h2>
+      <p class="section-sub">Framed for the people deciding whether to hire, fund, or partner.</p>
+    </div>
+    <div class="value-grid">
+      <div class="value-card">
+        <h3>Reliability at scale</h3>
+        <p>Track record of near-perfect uptime across carrier and enterprise infrastructure under real load.</p>
+      </div>
+      <div class="value-card">
+        <h3>Security-first design</h3>
+        <p>Every network decision considers attack surface — not bolted on after the fact.</p>
+      </div>
+      <div class="value-card">
+        <h3>Cost-conscious execution</h3>
+        <p>Delivered measurable savings through smarter architecture, not just more hardware.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Capabilities</div>
+      <h2 class="section-title">Skills & tooling</h2>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-card">
+        <h3>NETWORKING</h3>
+        <ul>
+          <li>Routing & Switching (BGP/OSPF)</li>
+          <li>SD-WAN / MPLS</li>
+          <li>VoIP / SIP infrastructure</li>
+          <li>Network segmentation</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>SECURITY</h3>
+        <ul>
+          <li>Firewall / IDS-IPS</li>
+          <li>Vulnerability assessment</li>
+          <li>Incident response</li>
+          <li>Zero-trust architecture</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>SYSTEMS & CLOUD</h3>
+        <ul>
+          <li>Linux administration</li>
+          <li>AWS / Azure networking</li>
+          <li>Virtualization</li>
+          <li>Automation (Python, Ansible)</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>TOOLING</h3>
+        <ul>
+          <li>Wireshark / tcpdump</li>
+          <li>Nessus / Qualys</li>
+          <li>Splunk / SIEM</li>
+          <li>Cisco IOS / NX-OS</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Case studies</div>
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-sub">Here are some of the projects I've worked on that showcase my approach and results.</p>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>Carrier Network Segmentation Overhaul</h3>
+        <span class="project-tag">Security</span>
+      </div>
+      <p>Redesigned flat internal network into segmented security zones after a third-party audit flagged lateral-movement risk across core telecom infrastructure.</p>
+      <div class="impact">↳ Reduced attack surface by ~60%, passed re-audit with zero critical findings</div>
+      <div class="stack"><span>VLANs</span><span>Palo Alto</span><span>Zero Trust</span><span>802.1X</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>VoIP Infrastructure Migration</h3>
+        <span class="project-tag">Infrastructure</span>
+      </div>
+      <p>Led migration of legacy PBX systems to SIP-based VoIP across multiple sites, including hardening against toll fraud and eavesdropping.</p>
+      <div class="impact">↳ Cut telephony costs by ~35%, zero downtime during cutover</div>
+      <div class="stack"><span>SIP</span><span>SRTP</span><span>SBC</span><span>QoS</span></div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <h3>SOC Detection Rule Tuning</h3>
+        <span class="project-tag">Detection</span>
+      </div>
+      <p>Rebuilt SIEM correlation rules to reduce alert fatigue while maintaining detection coverage for network intrusion attempts.</p>
+      <div class="impact">↳ Cut false positives 70%, improved mean-time-to-detect by 40%</div>
+      <div class="stack"><span>Splunk</span><span>Sigma rules</span><span>MITRE ATT&CK</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Track record</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+
+    <div class="exp-item">
+      <h3>Network Security Associate — Digital Divide Data</h3>
+      <div class="meta">2024 — 2026 · Nairobi, Kenya</div>
+      <ul>
+        <li>Own network security posture across several sites / endpoints</li>
+        <li>Led response to numerous incidents with zero data loss</li>
+        <li>Reduced mean-time-to-patch on critical CVEs</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <h3>Network support Engineer — City Network </h3>
+      <div class="meta">2023 — 2024 · Thika, Kenya</div>
+      <ul>
+        <li>Managed carrier-grade routing infrastructure supporting [X]k+ users</li>
+        <li>Implemented monitoring stack that cut outage detection time by [X]%</li>
+      </ul>
+    </div>
+
+
+<section id="certs">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-list">
+      <div class="cert"><span class="icon">✓</span> CISSP</div>
+      <div class="cert"><span class="icon">✓</span> CCNP Security</div>
+      <div class="cert"><span class="icon">✓</span> CompTIA Security+</div>
+      <div class="cert"><span class="icon">✓</span> AWS Certified Networking</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-panel">
+      <h2>Let's talk.</h2>
+      <p>Open to senior engineering roles, advisory work, and conversations with people building something worth securing.</p>
+      <div class="contact-links">
+        <a href="mailto:lorddavemutiso@gmail.com" class="btn-solid">Email me</a>
+        <a href="https://www.linkedin.com/in/david-mutiso-b83a36290" target="_blank" rel="noopener" class="btn-outline">LinkedIn</a>
+        <a href="https://github.com/lorddavemutiso-dotcom" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> David Mutiso</Data> · Built with intent.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
+index-bold.html
+Displaying index-bold.html.
